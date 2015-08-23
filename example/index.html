@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Box Model Inspector</title>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Slabo+27px' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../assets/boxmodel.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Javascript Box Model Inspector</h1>
+        <p>Chrome and Firefox style box model highlighter</p>
+        <div class="example">
+          <h2>Highlight any of these DOM Nodes</h2>
+          <div>
+            <h3>Highlights margin, padding and width</h3>
+          </div>
+          <div>
+            <h3>Custom styles</h3>
+          </div>
+          <div>
+            <h3>No jQuery</h3>
+          </div>
+        </div>
+        <button class="active">Button</button>
+        <button>Button</button>
+        <button>Button</button>
+      </div>
+    </header>
+
+    <script type="text/javascript" src="../index.js"></script>
+    <script type="text/javascript">
+      // initialize, options aren't required
+      var boxModelInspector = new BoxModelInspector({
+        el: document.querySelectorAll('.example')[0], 
+        className: 'selected'
+      });
+
+      // set new element
+      document.body.addEventListener('mousemove', function(e) {
+        boxModelInspector.setElement(e.target);
+        e.stopPropagation();
+      });
+
+      // refresh dimensions
+      window.addEventListener('resize', function() {
+        boxModelInspector.refresh();
+      });
+    </script>
+  </body>
+</html>

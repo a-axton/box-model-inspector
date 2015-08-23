@@ -1,0 +1,101 @@
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain) */ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block; } body {line-height: 1; } ol, ul {list-style: none; } blockquote, q {quotes: none; } blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none; } table {border-collapse: collapse; border-spacing: 0; }
+body {
+    background: #36384C;
+    font-family: 'Montserrat', sans-serif;
+}
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 12vh 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 36px;
+    padding-bottom: 20px;
+    color: #D7D9F1;
+}
+
+header p {
+    font-size: 19px;
+    color: #D7D9F1;
+    font-weight: 300;
+    font-family: 'Helvetica Nueue', sans-serif;
+    padding-bottom: 6px;
+}
+
+.example {
+    padding: 20px;
+    margin: 60px 0;
+    text-align: center;
+}
+
+.example:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.example h2 {
+    color: #444761;
+    font-size: 26px;
+    margin: 8px 0;
+    padding: 12px 0;
+    font-weight: 700;
+}
+
+.example h3 {
+    color: #444761;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 80px 0;    
+}
+
+.example p {
+    color: #444761;
+    font-size: 16px;
+}
+
+.example div, .example {
+    border: 3px solid #444761;
+}
+
+.example div {
+    padding: 0 30px;
+    margin-bottom: 15px;
+    float: left;
+    margin-right: 2%;
+    width: 24%;
+}
+
+.example div:first-of-type {
+    width: 48%;
+}
+
+.example div:last-of-type {
+    margin-right: 0;
+}
+
+button {
+    background: #444761;
+    padding: 24px 16px;
+    line-height: 18px;
+    border: 0;
+    color: #D7D9F1;
+    font-size: 20px;
+    margin: 6px 4px;
+}
+
+button:focus {
+    outline: 0;
+}
+
+button.active {
+    background: #51d8f0;
+}

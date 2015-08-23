@@ -1,0 +1,14 @@
+{
+  "name": "box-model-inspector",
+  "version": "0.0.0",
+  "description": "Devtools style box model inspector",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "browserify src/index.js --standalone BoxModelInspector > index.js"
+  },
+  "author": "Andy Axton",
+  "license": "ISC"
+}

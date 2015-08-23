@@ -1,0 +1,64 @@
+* { box-sizing: border-box }
+
+.box-model .padding {
+    outline: 1px solid #51d8f0;
+}
+
+.box-model .margin {
+    outline: 1px solid #51d8f0;
+}
+
+.box-model .margin div {
+    background-image: url('margin-bg.png');
+}
+
+.box-model .content {
+    outline: 1px solid #51d8f0;
+}
+
+.box-model .content div {
+    background-color: rgba(81, 216, 240, .2);
+    background-image: url('padding-bg.png');
+}
+
+/*
+ * Don't edit beyond this line
+ */
+
+.box-model {
+    position: absolute;
+    pointer-events: none;
+}
+
+.box-model .padding {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+}
+
+.box-model .margin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 190;
+}
+
+.box-model .margin div {
+    position: absolute;
+    background-attachment: fixed;
+}
+
+.box-model .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 195;
+}
+
+.box-model .content div {
+    position: absolute;
+    background-attachment: fixed;
+}
