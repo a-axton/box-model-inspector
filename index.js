@@ -109,9 +109,9 @@ BoxModelInspector.prototype._calculatePadding = function() {
   padding.top.style.top = (paddingTop * -1) + 'px';
   padding.top.style.left = (paddingLeft * -1) + 'px';
 
-  padding.right.style.height = elDimensions.outerHeight + 'px';
+  padding.right.style.height = elDimensions.outerHeight - paddingTop - paddingBottom + 'px';
   padding.right.style.width = paddingRight + 'px';
-  padding.right.style.top = (paddingTop * -1) + 'px';
+  // padding.right.style.top = (paddingTop * -1) + 'px';
   padding.right.style.right = (paddingRight * -1) + 'px';
 
   padding.bottom.style.height = paddingBottom + 'px';
@@ -119,9 +119,9 @@ BoxModelInspector.prototype._calculatePadding = function() {
   padding.bottom.style.bottom = (paddingBottom * -1) + 'px';
   padding.bottom.style.left = (paddingLeft * -1) + 'px';
 
-  padding.left.style.height = elDimensions.outerHeight + 'px';
+  padding.left.style.height = elDimensions.outerHeight - paddingTop - paddingBottom + 'px';
   padding.left.style.width = paddingLeft + 'px';
-  padding.left.style.top = (paddingTop * -1) + 'px';
+  // padding.left.style.top = (paddingTop * -1) + 'px';
   padding.left.style.left = (paddingLeft * -1) + 'px';
 }
 
