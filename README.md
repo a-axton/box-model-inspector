@@ -19,12 +19,14 @@ All required static assets are in the /assets directory, make sure to include th
 // if using npm, otherwise will be available as global variable
 var BoxModelInspector = require('box-model-inspector');
 
-// initialize, options aren't required
+// all options are optional
 var boxModelInspector = new BoxModelInspector({
   // initial element to highlight
   el: document.querySelectorAll('.example')[0],
-  // adds custom class to the highlighter
-  className: 'selected'
+  // will append to element, uses body as default
+  appendTo: document.body,
+  // set the wrapper element to be used, will ignore appendTo
+  wrapper: document.querySelectorAll('.wrapper')[0]
 });
 
 // set new element to be highlighted

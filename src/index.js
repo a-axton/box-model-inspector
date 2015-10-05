@@ -1,6 +1,8 @@
 function BoxModelInspector(options) {
+  options = options || {};
   this.el = options.el;
-  this.className = options.className || '';
+  this.appendTo = options.appendTo;
+  this.wrapper = options.wrapper;
 
   if (this.el) {
     this._elComputedStyles = window.getComputedStyle(this.el);
@@ -14,7 +16,13 @@ function BoxModelInspector(options) {
 // renders all required dom objects and appends to body
 // returns a reference object containing all node objects
 BoxModelInspector.prototype._buildDomNodes = function() {
-  this._parentElement = document.createElement('div');
+  var nodeReferences;
+
+  if (this.wrapper) {
+    this._parentElement = this.wrapper;
+  } else {
+    this._parentElement = document.createElement('div');
+  }
 
   var childElements = '<div class="padding"></div>' +
     '<div class="margin">' +
@@ -31,14 +39,34 @@ BoxModelInspector.prototype._buildDomNodes = function() {
     '</div>' +
     '<div class="element"></div>';
 
-  this._parentElement.className = 'box-model ' + this.className;
+  this._parentElement.classList.add('box-model');
   this._parentElement.innerHTML = childElements;
-  document.body.appendChild(this._parentElement);
 
-  return this._buildNodeReference(this._parentElement.childNodes);
+  if (!this.wrapper) {
+    if (this.appendTo) {
+      this.appendTo.appendChild(this._parentElement);
+    } else {
+      document.body.appendChild(this._parentElement);
+    }
+  }
+
+  nodeReferences = this._buildNodeReferences(this._parentElement.childNodes);
+  nodeReferences.wrapper.setAttribute('style', 'position: absolute; pointer-events: none;');
+  nodeReferences.padding.wrapper.setAttribute('style','position: relative; width: 100%; height: 100%; z-index: 200;');
+  nodeReferences.margin.wrapper.setAttribute('style','position: absolute; top: 0; left: 0; z-index: 190;');
+  nodeReferences.content.wrapper.setAttribute('style','position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 195;');
+  [nodeReferences.content, nodeReferences.margin].forEach(function(wrapper) {
+    for (var node in wrapper) {
+      if (node !== 'wrapper') {
+        wrapper[node].setAttribute('style','position: absolute; background-attachment: fixed;');
+      }
+    }
+  });
+
+  return nodeReferences;
 }
 
-BoxModelInspector.prototype._buildNodeReference = function(nodes, parent) {
+BoxModelInspector.prototype._buildNodeReferences = function(nodes, parent) {
   var nodeRef = {
     wrapper: this._parentElement
   }
@@ -54,7 +82,7 @@ BoxModelInspector.prototype._buildNodeReference = function(nodes, parent) {
     } else if (children) {
       refEntry = nodeRef[node.classList[0]] = {};
       refEntry.wrapper = node;
-      this._buildNodeReference(children, refEntry);
+      this._buildNodeReferences(children, refEntry);
     }
   }
 
@@ -129,9 +157,7 @@ BoxModelInspector.prototype._calculateMargin = function() {
 
 BoxModelInspector.prototype.setElement = function(el) {
   this.el = el;
-  // this.boxModel = this._buildDomNodes();
   this._elComputedStyles = window.getComputedStyle(el);
-
   this.refresh();
 }
 
