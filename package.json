@@ -1,6 +1,6 @@
 {
   "name": "box-model-inspector",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Devtools style box model inspector",
   "homepage": "https://github.com/a-axton/box-model-inspector",
   "repository": {
