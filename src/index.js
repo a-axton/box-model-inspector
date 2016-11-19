@@ -104,7 +104,7 @@ BoxModelInspector.prototype._calculatePadding = function() {
   padding.wrapper.style.top = paddingTop + 'px';
 
   padding.top.style.height = paddingTop + 'px';
-  padding.top.style.width = elDimensions.width + 'px';
+  padding.top.style.width = elDimensions.outerWidth + 'px';
   padding.top.style.top = (paddingTop * -1) + 'px';
   padding.top.style.left = (paddingLeft * -1) + 'px';
 
@@ -159,11 +159,24 @@ BoxModelInspector.prototype.setElement = function(el) {
   this.el = el;
   this._elComputedStyles = window.getComputedStyle(el);
   this.refresh();
+  return this;
+}
+
+BoxModelInspector.prototype.hide = function() {
+  this.boxModel.hidden = true;
+  this.boxModel.wrapper.style.display = 'none';
+  return this;
+}
+
+BoxModelInspector.prototype.show = function() {
+  this.boxModel.hidden = false;
+  this.refresh();
+  return this;
 }
 
 BoxModelInspector.prototype.refresh = function() {
+  if (this.boxModel.hidden) { return; }
   var el = this.el;
-
   var elDimensions = {
     offset: {
       left: el.offsetLeft,
@@ -176,7 +189,7 @@ BoxModelInspector.prototype.refresh = function() {
   };
 
   this._elDimensions = elDimensions;
-
+  this.boxModel.wrapper.style.display = 'block';
   this.boxModel.wrapper.style.left = elDimensions.offset.left + 'px';
   this.boxModel.wrapper.style.top = elDimensions.offset.top + 'px';
   this.boxModel.wrapper.style.height = elDimensions.outerHeight + 'px';
