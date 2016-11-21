@@ -1,7 +1,9 @@
 ## Box Model Inspector
-Devtools style dom node inspector. Draws a box around a given element highlighting width, height, margin and padding.
+Devtools style dom node inspector. Highlights the CSS box model just like chrome devtools. Draws a box around a given element highlighting width, height, margin, border & padding.
 
-![alt tag](https://raw.github.com/a-axton/box-model-inspector/master/example/readmegif.gif)
+##### Caveats
+- Expects box-sizing border-box
+- Doesn't work well with fixed position elements. It highlights properly but won't stay in the proper position when scrolling.
 
 ### Installation
 #### npm
@@ -10,23 +12,60 @@ npm install box-model-inspector --save
 ```
 #### inline
 ```html
-<script type="text/javascript" src="/path/to/box-model-inspector/index.js"></script>
+<script type="text/javascript" src="/path/to/box-model-inspector.js"></script>
 ```
-All required static assets are in the /assets directory, make sure to include those.
+### Theming
+```css
+* { box-sizing: border-box; }
+
+/* CONTENT */
+.box-model .content {
+  background: rgba(109, 238, 245, 0.5);
+}
+
+/* MARGIN */
+.box-model .margin {}
+.box-model .marginTop {}
+.box-model .marginRight {}
+.box-model .marginBottom {}
+.box-model .marginLeft {}
+.box-model .margin div {
+  background: rgba(251, 176, 91, 0.65);
+}
+
+/* PADDING */
+.box-model .padding {}
+.box-model .paddingTop {}
+.box-model .paddingRight {}
+.box-model .paddingBottom {}
+.box-model .paddingLeft {}
+.box-model .padding div {
+  background: rgba(139, 234, 127, 0.65);
+}
+
+/* BORDER */
+.box-model .border {}
+.box-model .borderTop {}
+.box-model .borderRight {}
+.box-model .borderBottom {}
+.box-model .borderLeft {}
+.box-model .border div {
+  background-color: rgba(234, 228, 105, .8);
+}
+```
 
 ### Sample Usage
 ```js
-// if using npm, otherwise will be available as global variable
 var BoxModelInspector = require('box-model-inspector');
 
 // all options are optional
 var boxModelInspector = new BoxModelInspector({
   // initial element to highlight
   el: document.querySelectorAll('.example')[0],
+  // custom class, defaults to 'box-model'
+  className: 'box-model',
   // will append to element, uses body as default
-  appendTo: document.body,
-  // set the wrapper element to be used, will ignore appendTo
-  wrapper: document.querySelectorAll('.wrapper')[0]
+  appendTo: document.body
 });
 
 // set new element to be highlighted
@@ -40,3 +79,37 @@ window.addEventListener('resize', function() {
   boxModelInspector.refresh();
 });
 ```
+
+### Methods
+#### setElement
+___
+Set new element to highlight
+##### Example
+```js
+var el = document.getElementById('el');
+boxModelInspector.setElement(el);
+```
+#### refresh
+___
+Refresh current element's box model
+##### Example
+```js
+window.addEventListener('resize', function() {
+  boxModelInspector.refresh();
+});
+```
+#### hide
+___
+Hide it
+##### Example
+```js
+boxModelInspector.hide();
+```
+#### show
+___
+Show it
+##### Example
+```js
+boxModelInspector.show();
+```
+
