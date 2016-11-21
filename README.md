@@ -1,6 +1,8 @@
 ## Box Model Inspector
 Devtools style dom node inspector. Highlights the CSS box model just like chrome devtools. Draws a box around a given element highlighting width, height, margin, border & padding.
 
+Demo: http://a-axton.github.io/box-model-inspector/
+
 ##### Caveats
 - Expects box-sizing border-box
 - Doesn't work well with fixed position elements. It highlights properly but won't stay in the proper position when scrolling.
