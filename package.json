@@ -1,24 +1,22 @@
 {
   "name": "box-model-inspector",
   "version": "0.1.1",
-  "description": "Devtools style box model inspector",
+  "description": "Devtools style css box model inspector in javascript",
   "homepage": "https://github.com/a-axton/box-model-inspector",
   "repository": {
     "type": "git",
     "url": "https://github.com/a-axton/box-model-inspector.git"
   },
-  "main": "index.js",
-  "directories": {
-    "example": "example"
-  },
+  "main": "lib/index.js",
   "scripts": {
-    "build": "browserify src/index.js --standalone BoxModelInspector > index.js"
+    "build": "browserify lib/index.js --standalone BoxModelInspector > box-model-inspector.js"
   },
   "keywords": [
     "box model",
     "inspector",
+    "chrome",
     "devtools"
   ],
   "author": "Andy Axton",
-  "license": "ISC"
+  "license": "MIT"
 }
