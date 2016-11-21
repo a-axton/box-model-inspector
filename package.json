@@ -9,7 +9,7 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "build": "browserify lib/index.js --standalone BoxModelInspector > box-model-inspector.js"
+    "build": "rollup -c"
   },
   "keywords": [
     "box model",
@@ -18,5 +18,9 @@
     "devtools"
   ],
   "author": "Andy Axton",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^0.36.3",
+    "rollup-plugin-uglify": "^1.0.1"
+  }
 }

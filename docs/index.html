@@ -134,15 +134,13 @@
 
     <div class="wrapper"></div>
 
-    <script type="text/javascript" src="../box-model-inspector.js"></script>
+    <script type="text/javascript" src="../dist/box-model-inspector.js"></script>
     <script type="text/javascript">
       // initialize, options aren't required
       var boxModelInspector = new BoxModelInspector({
-        // appendTo: document.querySelectorAll('.wrapper')[0],
-        // className: 'box-model'
+        appendTo: document.querySelectorAll('.wrapper')[0],
+        className: 'box-model'
       });
-
-      console.log(boxModelInspector)
 
       // set new element
       document.body.addEventListener('mousemove', function(e) {

@@ -12,7 +12,7 @@ npm install box-model-inspector --save
 ```
 #### inline
 ```html
-<script type="text/javascript" src="/path/to/box-model-inspector.js"></script>
+<script type="text/javascript" src="/path/dist/box-model-inspector.js"></script>
 ```
 ### Theming
 ```css
