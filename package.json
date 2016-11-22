@@ -2,7 +2,7 @@
   "name": "box-model-inspector",
   "version": "0.1.1",
   "description": "Devtools style css box model inspector in javascript",
-  "homepage": "https://github.com/a-axton/box-model-inspector",
+  "homepage": "http://a-axton.github.io/box-model-inspector/",
   "repository": {
     "type": "git",
     "url": "https://github.com/a-axton/box-model-inspector.git"
